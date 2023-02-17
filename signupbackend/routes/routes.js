@@ -4,7 +4,6 @@ const router = Router();
 
 
 router.post("/signup",(request,response)=>{
-    console.log(request);
     const signedUpUser = new SignUpSchema({
         username:request.body.username,
         password:request.body.password,
@@ -21,7 +20,6 @@ router.post("/login",async (request,response)=>{
         password:request.body.password,
     })
     const user = await SignUpSchema.find({username:loggedInUser.username, password:loggedInUser.password});
-    //console.log(user);
     if(user.length>0)
         response.send("Verified");
     else    
